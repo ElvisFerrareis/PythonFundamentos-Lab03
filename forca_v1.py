@@ -71,7 +71,7 @@ class Hangman:
 
 	# Método Construtor
 	def __init__(self, word):
-		
+		self.posicao = 0
 		
 	# Método para adivinhar a letra
 	def guess(self, letter):
@@ -86,7 +86,8 @@ class Hangman:
 		
 
 	# Método para não mostrar a letra no board
-	def hide_word(self):
+	def hide_word(self, word):
+		hidden = '_'
 		
 		
 	# Método para checar o status do game e imprimir o board na tela
