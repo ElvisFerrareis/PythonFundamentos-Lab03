@@ -73,15 +73,15 @@ class Hangman:
 	def __init__(self, word):
 		self.posicao = 0
 		self.word = word
-		self.word_hidden = self.hide_word(word)
 		self.letras_certas = []
 		self.letras_erradas = []
+		self.word_hidden = self.hide_word(word)
 		
 	# Método para adivinhar a letra
 	def guess(self, letter):
 		if letter in self.word:
 			self.letras_certas.append(letter)
-			self.unhide_word(letter)
+			self.word_hidden = self.hide_word(self.word)
 		else:
 			self.letras_erradas.append(letter)
 			self.posicao += 1
@@ -103,23 +103,35 @@ class Hangman:
 	# Método para não mostrar a letra no board
 	def hide_word(self, word):
 		hidden = '_'
-		return str([hidden for x in word])
+		lista_escondida = [letra for letra in word]
+		word_hidden = ''
+		for i in range(0, len(word)):
+			if lista_escondida[i] not in self.letras_certas:
+				word_hidden += hidden
+			else:
+				word_hidden += lista_escondida[i]
+		return word_hidden
 
-	# Método para mostrar a letra no board quando o jogador acertar a letra
-	def unhide_word(self, letter):
-		letter_positions = [x for x in range(0, len(self.word)) if letter == self.word[x]]
-		for x in letter_positions:
-			self.word_hidden[x] = self.word[x]
-		
 	# Método para checar o status do game e imprimir o board na tela
 	def print_game_status(self):
+		game_over = False
+		while not game_over:
+			print(board[self.posicao])
+			print("Palavra " + self.word_hidden)
+			print("Letras erradas: " + str(self.letras_erradas))
+			print("Letras corretas: " + str(self.letras_certas))
+			print("")
+			letter = input("Digite uma letra: ")
+			self.guess(letter)
+			if self.hangman_won() or self.hangman_over():
+				game_over = True
 		
 
 # Função para ler uma palavra de forma aleatória do banco de palavras
 def rand_word():
 	with open("palavras.txt", "rt") as f:
 		bank = f.readlines()
-	return bank[random.randint(0,len(bank))].strip()
+	return bank[random.randint(0, len(bank) - 1)].strip()
 
 
 # Função Main - Execução do Programa
