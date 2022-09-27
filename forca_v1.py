@@ -122,7 +122,8 @@ class Hangman:
 			print("Letras corretas: " + str(self.letras_certas))
 			print("")
 			letter = input("Digite uma letra: ")
-			self.guess(letter)
+			if letter not in self.letras_certas and letter not in self.letras_erradas:
+				self.guess(letter)
 			if self.hangman_won() or self.hangman_over():
 				game_over = True
 		
