@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="43801a72-bdf2-407c-a687-773d99b2e656" name="Changes" comment="Codificação dos métodos da classe Hangman">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forca_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/forca_v1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
